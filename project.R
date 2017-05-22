@@ -96,6 +96,7 @@ aggregated_by_month = aggregate(DEPARTURE_DELAY ~ MONTH, cleanedData, mean)
 plot3a = ggplot(aggregated_by_month, aes(as.factor(MONTH) , DEPARTURE_DELAY)) +
   geom_col(size=2,fill = "blue") +
   theme_bw() +
+  ylim(c(-1,15))+
   ggtitle("Average delay in origin airports")+
   labs(x="Month", y="Departure delay (min)") +
   scale_x_discrete(labels=month.abb)
@@ -109,9 +110,11 @@ month_num = as.numeric(cleanedData$MONTH)
 plot3b = ggplot(aggregated_by_month, aes(as.factor(MONTH) , ARRIVAL_DELAY)) +
   geom_col(size=2,fill = "blue") +
   theme_bw() +
+  ylim(c(-1,15))+
   ggtitle("Average delay in destination airports")+
   scale_x_discrete(labels=month.abb)+
-labs(x="Month", y="Arrival delay (min)") 
+  labs(x="Month", y="Arrival delay (min)") 
 
-grid.arrange(plot3a,
+library(gridExtra)
+grid.arrange(plot3a,plot3b,ncol=2)
 
