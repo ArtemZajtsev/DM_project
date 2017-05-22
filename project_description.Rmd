@@ -1,0 +1,22 @@
+---
+title: "Flying delay prediction Data Mining Project"
+author: "Mykola Rybak Artem Zaitsev Kate Lytvyniuk"
+output:
+  html_document: default
+---
+
+#Project Description and Expectation
+#TODO: write some intro here
+Goal: predict probable cancellation or delay of a flight so it could allow customers to be informed beforehand faster and more accurately.
+Expected result: The aircraft companies and airports could provide better customer service using the information of future disruptions that might happen.
+
+#Data Input
+  
+  The U.S. Department of Transportation's (DOT) Bureau of Transportation Statistics tracks the on-time performance of domestic flights operated by large air carriers. Summary information on the number of on-time, delayed, canceled, and diverted flights is published in DOT's monthly Air Travel Consumer Report and in this dataset of 2015 flight delays and cancellations.
+  As the initial dataset we analyzed data from <a href="https://www.kaggle.com/usdot/flight-delays">Kaggle</a> that was collected and published by the DOT's Bureau of Transportation Statistics.
+# TODO: write about cleaning dataset
+
+#Data Exploration
+
+Firstly, we decided to observe probability of the delay from different aspects like day of the week, month, hour and airports. We observed arrival and departure details using histogram plots.
+
