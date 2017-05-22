@@ -118,3 +118,28 @@ plot3b = ggplot(aggregated_by_month, aes(as.factor(MONTH) , ARRIVAL_DELAY)) +
 library(gridExtra)
 grid.arrange(plot3a,plot3b,ncol=2)
 
+#Plot 4a.  WEEkday - delay ORIGIN
+
+aggregated_by_WEEkday = aggregate(DEPARTURE_DELAY ~ DAY_OF_WEEK, cleanedData, mean)
+
+plot4a = ggplot(aggregated_by_WEEkday, aes(as.factor(DAY_OF_WEEK), DEPARTURE_DELAY)) +
+  geom_col(size=2,fill = "green") +
+  theme_bw() +
+  ylim(c(-1,15))+
+  ggtitle("Average delay in origin airports divided by weekday")+
+  labs(x="Day of week", y="Departure delay (min)") +
+  scale_x_discrete(breaks=1:7,labels=c("Mon","Tue","Wed","Thu","Fri","Sat","Sun"))
+
+#Plot 4b.  WEEkday - delay DESTINATION
+
+aggregated_by_WEEkday = aggregate(ARRIVAL_DELAY ~ DAY_OF_WEEK, cleanedData, mean)
+
+plot4b = ggplot(aggregated_by_WEEkday, aes(as.factor(DAY_OF_WEEK), ARRIVAL_DELAY)) +
+  geom_col(size=2,fill = "green") +
+  theme_bw() +
+  ylim(c(-1,15))+
+  ggtitle("Average delay in destination airports divided by weekday")+
+  labs(x="Day of week", y="Departure delay (min)") +
+  scale_x_discrete(breaks=1:7,labels=c("Mon","Tue","Wed","Thu","Fri","Sat","Sun"))
+
+grid.arrange(plot4a,plot4b,ncol=2)
