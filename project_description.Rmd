@@ -18,5 +18,12 @@ Expected result: The aircraft companies and airports could provide better custom
 
 #Data Exploration
 
-Firstly, we decided to observe probability of the delay from different aspects like day of the week, month, hour and airports. We observed arrival and departure details using histogram plots.
+1) Firstly, we decided to observe probability of the delay from different aspects like day of the week, month, hour and airports. We observed arrival and departure details using histogram plots.
 
+
+
+
+2) The four big airports San Diego International Airport, JFK - John F. Kennedy International Airport, Miami International Airport, Atlanta International Airport(SAN, JFK, MIA, ATL)are selected to show the difference of average delay time between them. Origin and arrival delays are analysed and displayed separetely.
+
+
+3) It may be interesting if departure delay time differs from arrival. The average time is taken as an input and the following rwo plots were produced to observe the data.
