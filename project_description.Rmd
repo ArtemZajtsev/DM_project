@@ -27,3 +27,5 @@ Expected result: The aircraft companies and airports could provide better custom
 
 
 3) It may be interesting if departure delay time differs from arrival. The average time is taken as an input and the following rwo plots were produced to observe the data. The whole dataset is used here.
+
+4) Average delay in origin and destinations airports divided by weekday
