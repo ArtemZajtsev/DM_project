@@ -29,7 +29,7 @@ write.csv(cleanedData,file='cleanedData.csv',quote = FALSE,row.names = FALSE)
 # Plots 
 library(ggplot2)
 
-#Departure Delay Histrogram density ~ min 
+#plot 1a. Departure Delay Histrogram density ~ min 
 
 ggplot(data=cleanedData, aes(x= cleanedData$DEPARTURE_DELAY, y = ..density..)) + 
     geom_histogram(
@@ -44,7 +44,7 @@ ggplot(data=cleanedData, aes(x= cleanedData$DEPARTURE_DELAY, y = ..density..)) +
     theme_bw() +
     theme(plot.title = element_text(hjust = 0.5))
 
-#Arrival Delay Histrogram density ~ min 
+# plot 1b. Arrival Delay Histrogram density ~ min 
 
 ggplot(data=cleanedData, aes(x= cleanedData$ARRIVAL_DELAY, y = ..density..)) + 
   geom_histogram(
@@ -60,7 +60,7 @@ ggplot(data=cleanedData, aes(x= cleanedData$ARRIVAL_DELAY, y = ..density..)) +
   theme(plot.title = element_text(hjust = 0.5))
 
 
-#Plot 3a. Avg delay - ORIGIN airports (4 big airports)
+#Plot 2a. Avg delay - ORIGIN airports (4 big airports)
 
 origin_airoports = subset(cleanedData, cleanedData$ORIGIN_AIRPORT %in% c("SAN", "JFK", "MIA", "ATL")) 
 delay_origin_airports = origin_airoports[,c("ORIGIN_AIRPORT", "MONTH", "DEPARTURE_DELAY")]
@@ -74,7 +74,7 @@ ggplot(aggregated_airports, aes(MONTH , DEPARTURE_DELAY, colour= ORIGIN_AIRPORT)
 labs(x="Month", y="Departure delay (min)") +
 scale_x_discrete(labels=month.abb)    
 
-#Plot 3b. Avg delay - DESTINATION airports (4 big airports)
+#Plot 2b. Avg delay - DESTINATION airports (4 big airports)
 
 destination_airoports = subset(cleanedData, cleanedData$DESTINATION_AIRPORT %in% c("SAN", "JFK", "MIA", "ATL")) 
 delay_destination_airports = destination_airoports[,c("DESTINATION_AIRPORT", "MONTH", "ARRIVAL_DELAY")]
@@ -89,25 +89,29 @@ ggplot(aggregated_airports, aes(MONTH , ARRIVAL_DELAY, colour= DESTINATION_AIRPO
   labs(x="Month", y="Arrival delay (min)") +
   scale_x_discrete(labels=month.abb)
 
-#Plot 4a.  Month - delay ORIGIN
+#Plot 3a.  Month - delay ORIGIN
 
 aggregated_by_month = aggregate(DEPARTURE_DELAY ~ MONTH, cleanedData, mean)
 
-ggplot(aggregated_by_month, aes(as.factor(MONTH) , DEPARTURE_DELAY)) +
+plot3a = ggplot(aggregated_by_month, aes(as.factor(MONTH) , DEPARTURE_DELAY)) +
   geom_col(size=2,fill = "blue") +
   theme_bw() +
-  ggtitle("Average delay in destination airports")+
+  ggtitle("Average delay in origin airports")+
   labs(x="Month", y="Departure delay (min)") +
   scale_x_discrete(labels=month.abb)
 
-#Plot 4b.  Month - delay DESTINATION
+
+
+#Plot 3b.  Month - delay DESTINATION
 
 aggregated_by_month = aggregate(ARRIVAL_DELAY ~ MONTH, cleanedData, mean)
 month_num = as.numeric(cleanedData$MONTH)
-ggplot(aggregated_by_month, aes(as.factor(MONTH) , ARRIVAL_DELAY)) +
+plot3b = ggplot(aggregated_by_month, aes(as.factor(MONTH) , ARRIVAL_DELAY)) +
   geom_col(size=2,fill = "blue") +
   theme_bw() +
   ggtitle("Average delay in destination airports")+
   scale_x_discrete(labels=month.abb)+
 labs(x="Month", y="Arrival delay (min)") 
+
+grid.arrange(plot3a,
 
