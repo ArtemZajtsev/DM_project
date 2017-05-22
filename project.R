@@ -72,7 +72,7 @@ ggplot(aggregated_airports, aes(MONTH , DEPARTURE_DELAY, colour= ORIGIN_AIRPORT)
  theme_bw() +
  ggtitle("Average delay in origin airports")+
 labs(x="Month", y="Departure delay (min)") +
-scale_x_discrete(labels=month.abb)    
+  scale_x_continuous(breaks=seq(1.0,12.0,by=1),labels=month.abb)
 
 #Plot 2b. Avg delay - DESTINATION airports (4 big airports)
 
@@ -86,8 +86,8 @@ ggplot(aggregated_airports, aes(MONTH , ARRIVAL_DELAY, colour= DESTINATION_AIRPO
   geom_line(size=2) +
   theme_bw() +
   ggtitle("Average delay in destination airports")+
-  labs(x="Month", y="Arrival delay (min)") +
-  scale_x_discrete(labels=month.abb)
+  labs( y="Arrival delay (min)")+
+  scale_x_continuous(breaks=seq(1.0,12.0,by=1),labels=month.abb) 
 
 #Plot 3a.  Month - delay ORIGIN
 
