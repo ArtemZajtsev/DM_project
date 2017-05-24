@@ -189,3 +189,27 @@ plot5b = ggplot(aggregateByHourARRIVAL, aes(as.factor(SCHEDULED_ARRIVAL), ARRIVA
   ggtitle("Average arrival delay by hour")+
   labs(x="Hour", y="Arrival delay (min)") +
   theme(plot.title = element_text(hjust = 0.5))
+
+# Airlines
+
+aggregateByAirlinesArrival <- aggregate(ARRIVAL_DELAY ~ AIRLINE, cleanedData, mean)
+
+plot6a = ggplot(aggregateByAirlinesArrival, aes(as.factor(AIRLINE), ARRIVAL_DELAY)) +
+  geom_col(size=1, fill="dark blue", alpha = .7) +
+  theme_bw() +
+  ylim(c(-1.5,15))+
+  ggtitle("Average arrival delay by airline")+
+  labs(x="Airline", y="Arrival delay (min)") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+aggregateByAirlinesDeparture <- aggregate(DEPARTURE_DELAY ~ AIRLINE, cleanedData, mean)
+
+plot6b = ggplot(aggregateByAirlinesDeparture, aes(as.factor(AIRLINE), DEPARTURE_DELAY)) +
+  geom_col(size=1, fill="goldenrod1", alpha = .7) +
+  theme_bw() +
+  ylim(c(-1.5,16))+
+  ggtitle("Average Departure delay by airline")+
+  labs(x="Airline", y="Deaprture delay (min)") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+grid.arrange(plot6a,plot6b,ncol=2)
