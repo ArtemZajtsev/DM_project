@@ -86,12 +86,14 @@ cleanedData <- filter(cleanedData, cleanedData$ORIGIN_AIRPORT %in% airportWithMo
   In constrast to the departure delay the distribution of arrival delay significally differs. Starting from 10 o'clock delays starting accummulating until to the next day at 3. What is more, 6-9 hours have even negative arrival delays that means that most of the flight arrival earlier than planned.The distribution of arrival delay by hour has a "V" shape.
   As a conclusion, the distribution of delays by hour are differ the most, thus it is one of the best canditate to be good predicor of delay. 
 
-![](./plots/Avg delay in origin.png)
-![](./plots/Avg delay in destination.png)
 
 2) The four big airports San Diego International Airport, JFK - John F. Kennedy International Airport, Miami International Airport, Atlanta International Airport(SAN, JFK, MIA, ATL) are selected to show the difference of average delay time between them. Origin and arrival delays are analysed and displayed separetely.
 
+![](./plots/Avg delay in origin.png)
 
-3) It may be interesting if departure delay time differs from arrival. The average time is taken as an input and the following rwo plots were produced to observe the data. The whole dataset is used here.
+From average delay in origin airports plot we can see that peak delays for JFK is in february. JFK is situated near New York which is in northern part of US, therefore weather conditions in winter there are difficult, which causes delays. Second peak of the plot refers to MIA airport in July. It is quite logical, because Miami is in souther part of US and it is a popular tourist place, therefore passenger traffic should increase for this airport in summer, which causes higher delays.
 
-4) Average delay in origin and destinations airports divided by weekday
+![](./plots/Avg delay in destination.png)
+
+From average delay in destination airports we can see that JFK has the highest destination delays among other airports and they are in february and march. In addition, delay in destination airports are slightly lower then delays in origin airports because of time gap which is embedded into flight time. 
+
